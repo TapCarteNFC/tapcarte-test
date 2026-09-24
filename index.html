@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tap’Carte — Votre présence digitale, en un geste</title>
+  <title>Tap’Carte</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -37,8 +40,14 @@
       justify-content: center;
       font-size: 19px;
       font-weight: 700;
-      letter-spacing: -1px;
       margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     h1 {
@@ -46,6 +55,7 @@
       font-size: 27px;
       letter-spacing: -1px;
       font-weight: 700;
+      text-align: center;
     }
 
     .tagline {
@@ -77,22 +87,12 @@
       justify-content: center;
       font-size: 15px;
       font-weight: 600;
-      transition: transform .15s ease, background .15s ease;
-    }
-
-    .link:hover {
-      transform: translateY(-1px);
-      background: #faf9f7;
     }
 
     .featured {
       background: #171717;
       color: #fff;
       border-color: #171717;
-    }
-
-    .featured:hover {
-      background: #292929;
     }
 
     .footer {
@@ -107,36 +107,145 @@
     .footer strong {
       color: #171717;
     }
+
+    .error {
+      text-align: center;
+      color: #777;
+      margin-top: 30px;
+    }
   </style>
 </head>
 
 <body>
-  <main class="page">
 
-    <div class="logo">TC</div>
+<main class="page">
 
-    <h1>Tap’Carte</h1>
+  <div class="logo" id="logo">TC</div>
 
-    <p class="tagline">
-      Votre univers digital.<br>
-      Accessible en un geste.
-    </p>
+  <h1 id="clientName">Tap’Carte</h1>
 
-    <div class="links">
-      <a class="link featured" href="#">Laisser un avis Google</a>
-      <a class="link" href="#">Visiter notre site web</a>
-      <a class="link" href="#">Suivre sur Instagram</a>
-      <a class="link" href="#">Suivre sur TikTok</a>
-      <a class="link" href="#">Suivre sur Facebook</a>
-      <a class="link" href="#">Découvrir nos services</a>
-      <a class="link" href="#">Nous contacter</a>
-      <a class="link" href="#">WhatsApp</a>
-    </div>
+  <p class="tagline">
+    Votre univers digital.<br>
+    Accessible en un geste.
+  </p>
 
-    <div class="footer">
-      Propulsé par <strong>Tap’Carte</strong>
-    </div>
+  <div class="links">
 
-  </main>
+    <a class="link featured" id="google" target="_blank">
+      Laisser un avis Google
+    </a>
+
+    <a class="link" id="website" target="_blank">
+      Visiter notre site web
+    </a>
+
+    <a class="link" id="instagram" target="_blank">
+      Suivre sur Instagram
+    </a>
+
+    <a class="link" id="tiktok" target="_blank">
+      Suivre sur TikTok
+    </a>
+
+    <a class="link" id="facebook" target="_blank">
+      Suivre sur Facebook
+    </a>
+
+    <a class="link" id="services" target="_blank">
+      Découvrir nos services
+    </a>
+
+    <a class="link" id="contact" target="_blank">
+      Nous contacter
+    </a>
+
+    <a class="link" id="whatsapp" target="_blank">
+      WhatsApp
+    </a>
+
+  </div>
+
+  <div class="footer">
+    Propulsé par <strong>Tap’Carte</strong>
+  </div>
+
+</main>
+
+<script>
+
+const API_URL =
+  "https://x8ki-letl-twmt.n7.xano.io/api:card/get_card";
+
+const params = new URLSearchParams(window.location.search);
+const slug = params.get("slug");
+
+async function loadCard() {
+
+  if (!slug) {
+    return;
+  }
+
+  try {
+
+    const response = await fetch(
+      API_URL + "?slug=" + encodeURIComponent(slug)
+    );
+
+    const result = await response.json();
+
+    if (!result || result.length === 0) {
+      document.getElementById("clientName").textContent = "Carte introuvable";
+      return;
+    }
+
+    const card = result[0];
+
+    // Nom
+    if (card.client_name) {
+      document.getElementById("clientName").textContent =
+        card.client_name;
+    }
+
+    // Logo
+    if (card.logo_url) {
+      document.getElementById("logo").innerHTML =
+        '<img src="' + card.logo_url + '" alt="Logo">';
+    }
+
+    // Liens
+    setLink("google", card.google_url);
+    setLink("website", card.website_url);
+    setLink("instagram", card.instagram_url);
+    setLink("tiktok", card.tiktok_url);
+    setLink("facebook", card.facebook_url);
+    setLink("services", card.destination_url);
+    setLink("contact", card.whatsapp_url);
+    setLink("whatsapp", card.whatsapp_url);
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("clientName").textContent =
+      "Une erreur est survenue";
+  }
+}
+
+function setLink(id, url) {
+
+  const element = document.getElementById(id);
+
+  if (!url) {
+    element.style.display = "none";
+    return;
+  }
+
+  element.href = url;
+}
+
+loadCard();
+
+</script>
+
 </body>
 </html>

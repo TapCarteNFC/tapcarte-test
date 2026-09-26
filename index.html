@@ -2,287 +2,534 @@
 <html lang="fr">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Tap’Carte</title>
 
-  <!-- Font Awesome -->
+
+  <!-- FONT AWESOME -->
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
 
+
   <style>
+
+    /* ==================================================
+       GLOBAL
+    ================================================== */
+
     * {
       box-sizing: border-box;
     }
 
+
+    html {
+      background: #f7f7f5;
+    }
+
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
       background: #f7f7f5;
-      color: #1c1c1c;
+      color: #1f1f1f;
     }
+
+
+    /* ==================================================
+       PAGE
+    ================================================== */
 
     .page {
+
       width: 100%;
       max-width: 430px;
+
       min-height: 100vh;
+
       margin: 0 auto;
-      padding: 22px 18px 28px;
+
+      padding:
+        24px
+        18px
+        30px;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+
+    /* ==================================================
+       PROFILE
+    ================================================== */
 
     .profile {
       text-align: center;
     }
 
+
+    /* ==================================================
+       LOGO
+    ================================================== */
+
     .logo-container {
+
       width: 100%;
       height: 145px;
+
       background: #ffffff;
-      border: 1px solid #eeeeee;
+
+      border:
+        1px solid
+        #ededed;
+
       border-radius: 22px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+
       overflow: hidden;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
+
+      margin-bottom: 22px;
+
+      box-shadow:
+        0 4px 18px
+        rgba(0, 0, 0, 0.045);
     }
 
+
     .logo {
-      max-width: 75%;
+
+      max-width: 72%;
       max-height: 105px;
+
       object-fit: contain;
     }
 
+
     .default-logo {
-      width: 65px;
-      height: 65px;
+
+      width: 66px;
+      height: 66px;
+
       border-radius: 18px;
+
       background: #f1f1ef;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-size: 21px;
+
       font-weight: 700;
+
       color: #333;
     }
 
+
+    /* ==================================================
+       CLIENT NAME
+    ================================================== */
+
     .client-name {
+
       margin: 0;
+
       font-size: 25px;
+
       line-height: 1.2;
+
       font-weight: 700;
-      letter-spacing: -0.5px;
+
+      letter-spacing: -0.6px;
+
+      color: #1d1d1d;
     }
 
+
+    /* ==================================================
+       CONTACT INFORMATION
+    ================================================== */
+
     .contact-info {
-      margin-top: 10px;
+
+      margin-top: 11px;
+
       display: flex;
+
       flex-direction: column;
+
+      align-items: center;
+
       gap: 5px;
+
       color: #777;
-      font-size: 13px;
+
+      font-size: 13.5px;
+
       line-height: 1.4;
     }
 
+
+    .contact-line {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+    }
+
+
+    .contact-line i {
+
+      font-size: 12px;
+
+      color: #858585;
+    }
+
+
     .contact-info a {
+
       color: inherit;
+
       text-decoration: none;
     }
 
+
+    /* ==================================================
+       DESCRIPTION
+    ================================================== */
+
     .description {
-      margin: 18px auto 25px;
+
       max-width: 360px;
-      color: #666;
+
+      margin:
+        18px auto
+        0;
+
+      color: #686868;
+
       font-size: 14px;
+
       line-height: 1.55;
+
+      text-align: center;
     }
 
-    /* =========================
-       LINKS
-    ========================= */
+
+    /* ==================================================
+       ESPACE ENTRE INFOS ET BOUTONS
+    ================================================== */
 
     .links {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 11px;
+
+      margin-top: 30px;
     }
 
+
+    /* ==================================================
+       LINK CARD
+    ================================================== */
+
     .link {
+
       width: 100%;
-      min-height: 65px;
-      padding: 9px 14px 9px 12px;
+
+      min-height: 64px;
+
+      padding:
+        9px
+        14px
+        9px
+        12px;
 
       background: #ffffff;
-      border: 1px solid #eeeeee;
+
+      border:
+        1px solid
+        #ededed;
+
       border-radius: 17px;
 
       color: #222;
+
       text-decoration: none;
 
       display: none;
+
       align-items: center;
 
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.045);
+      box-shadow:
+        0 4px 15px
+        rgba(0, 0, 0, 0.045);
 
       transition:
         transform 0.15s ease,
         box-shadow 0.15s ease;
     }
 
+
     .link:active {
-      transform: scale(0.985);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+      transform:
+        scale(0.985);
+
+      box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, 0.04);
     }
 
+
+    /* ==================================================
+       ICON
+    ================================================== */
+
     .icon {
+
       width: 43px;
       height: 43px;
+
       min-width: 43px;
 
       border-radius: 50%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       font-size: 18px;
+
       margin-right: 13px;
     }
 
+
+    /* ==================================================
+       LINK CONTENT
+    ================================================== */
+
     .link-content {
+
       flex: 1;
+
       text-align: left;
     }
 
+
     .link-title {
+
       font-size: 14.5px;
+
       font-weight: 600;
+
       line-height: 1.3;
+
+      color: #252525;
     }
 
+
     .link-arrow {
+
       color: #999;
-      font-size: 13px;
+
+      font-size: 12px;
+
       margin-left: 10px;
     }
 
-    /* =========================
+
+    /* ==================================================
        ICON COLORS
-    ========================= */
+    ================================================== */
 
     .google {
+
       background: #f1f4ff;
       color: #4285f4;
     }
 
+
     .instagram {
+
       background: #fff0f5;
       color: #d62976;
     }
 
+
     .tiktok {
+
       background: #eeeeee;
       color: #111;
     }
 
+
     .facebook {
+
       background: #edf3ff;
       color: #1877f2;
     }
 
+
     .whatsapp {
+
       background: #ebf9ef;
       color: #25d366;
     }
 
+
     .website {
+
       background: #f1f1f1;
       color: #555;
     }
 
+
     .tripadvisor {
+
       background: #edf9f0;
       color: #34a853;
     }
 
+
     .booking {
+
       background: #eef4ff;
       color: #003b95;
     }
 
+
     .services {
+
       background: #f4f1ed;
       color: #555;
     }
 
-    /* =========================
+
+    /* ==================================================
        FOOTER
-    ========================= */
+    ================================================== */
 
     .footer {
+
       text-align: center;
-      margin-top: 32px;
+
+      margin-top: 34px;
+
       color: #a0a0a0;
+
       font-size: 10.5px;
+
       letter-spacing: 0.3px;
     }
 
+
     .footer strong {
+
       color: #555;
+
       font-weight: 600;
     }
 
-    /* =========================
+
+    /* ==================================================
        ERROR
-    ========================= */
+    ================================================== */
 
     .error {
+
       text-align: center;
+
       color: #777;
+
       margin-top: 40px;
     }
+
+
   </style>
+
 </head>
 
 
 <body>
 
+
   <main class="page">
 
-    <!-- =========================
+
+    <!-- ==================================================
          PROFILE
-    ========================= -->
+    ================================================== -->
 
     <section class="profile">
 
-      <div class="logo-container" id="logoContainer">
 
-        <div class="default-logo" id="defaultLogo">
+      <!-- LOGO -->
+
+      <div
+        class="logo-container"
+        id="logoContainer"
+      >
+
+        <div
+          class="default-logo"
+          id="defaultLogo"
+        >
           TC
         </div>
 
       </div>
 
 
-      <h1 class="client-name" id="clientName">
+      <!-- CLIENT NAME -->
+
+      <h1
+        class="client-name"
+        id="clientName"
+      >
         Tap’Carte
       </h1>
 
 
+      <!-- CONTACT -->
+
       <div class="contact-info">
+
 
         <!-- ADDRESS -->
 
-        <div id="addressContainer" style="display: none;">
+        <div
+          class="contact-line"
+          id="addressContainer"
+          style="display: none;"
+        >
 
           <i class="fa-solid fa-location-dot"></i>
 
@@ -293,7 +540,11 @@
 
         <!-- PHONE -->
 
-        <div id="phoneContainer" style="display: none;">
+        <div
+          class="contact-line"
+          id="phoneContainer"
+          style="display: none;"
+        >
 
           <i class="fa-solid fa-phone"></i>
 
@@ -307,7 +558,11 @@
 
         <!-- WEBSITE -->
 
-        <div id="websiteInfoContainer" style="display: none;">
+        <div
+          class="contact-line"
+          id="websiteInfoContainer"
+          style="display: none;"
+        >
 
           <i class="fa-solid fa-globe"></i>
 
@@ -318,6 +573,7 @@
           ></a>
 
         </div>
+
 
       </div>
 
@@ -330,12 +586,14 @@
         style="display: none;"
       ></div>
 
+
     </section>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          LINKS
-    ========================= -->
+    ================================================== -->
 
     <section class="links">
 
@@ -349,20 +607,29 @@
       >
 
         <div class="icon google">
+
           <i class="fa-brands fa-google"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             Laisser un avis
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- TRIPADVISOR -->
@@ -374,20 +641,29 @@
       >
 
         <div class="icon tripadvisor">
+
           <i class="fa-brands fa-tripadvisor"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             TripAdvisor
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- INSTAGRAM -->
@@ -399,20 +675,29 @@
       >
 
         <div class="icon instagram">
+
           <i class="fa-brands fa-instagram"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             Instagram
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- TIKTOK -->
@@ -424,20 +709,29 @@
       >
 
         <div class="icon tiktok">
+
           <i class="fa-brands fa-tiktok"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             TikTok
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- FACEBOOK -->
@@ -449,20 +743,29 @@
       >
 
         <div class="icon facebook">
+
           <i class="fa-brands fa-facebook-f"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             Facebook
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- BOOKING -->
@@ -474,20 +777,29 @@
       >
 
         <div class="icon booking">
+
           <i class="fa-solid fa-calendar-check"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             Prendre rendez-vous
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
+
 
 
       <!-- WEBSITE -->
@@ -499,45 +811,29 @@
       >
 
         <div class="icon website">
+
           <i class="fa-solid fa-globe"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             Site internet
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
 
-
-      <!-- SERVICES -->
-
-      <a
-        class="link"
-        id="services"
-        target="_blank"
-      >
-
-        <div class="icon services">
-          <i class="fa-solid fa-list"></i>
-        </div>
-
-        <div class="link-content">
-          <div class="link-title">
-            Découvrir nos services
-          </div>
-        </div>
-
-        <div class="link-arrow">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-
-      </a>
 
 
       <!-- WHATSAPP -->
@@ -549,69 +845,91 @@
       >
 
         <div class="icon whatsapp">
+
           <i class="fa-brands fa-whatsapp"></i>
+
         </div>
 
+
         <div class="link-content">
+
           <div class="link-title">
             WhatsApp
           </div>
+
         </div>
 
+
         <div class="link-arrow">
+
           <i class="fa-solid fa-chevron-right"></i>
+
         </div>
 
       </a>
 
+
     </section>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          FOOTER
-    ========================= -->
+    ================================================== -->
 
     <footer class="footer">
-      NFC by <strong>Tap’Carte</strong>
+
+      NFC by
+      <strong>Tap’Carte</strong>
+
     </footer>
+
 
   </main>
 
 
-  <!-- =========================
+
+  <!-- ==================================================
        JAVASCRIPT
-  ========================= -->
+  ================================================== -->
 
   <script>
 
-    /* =========================
-       XANO
-    ========================= */
+
+    /* ==================================================
+       XANO API
+    ================================================== */
 
     const API_URL =
       "https://x8ki-letl-twmt.n7.xano.io/api:card/get_card";
 
 
-    /* =========================
+    /* ==================================================
        RECUPERATION DU SLUG
-    ========================= */
+    ================================================== */
 
     const params =
-      new URLSearchParams(window.location.search);
+      new URLSearchParams(
+        window.location.search
+      );
+
 
     const slug =
       params.get("slug");
 
 
-    /* =========================
+    /* ==================================================
        CHARGEMENT DE LA CARTE
-    ========================= */
+    ================================================== */
 
     async function loadCard() {
 
+
       if (!slug) {
 
-        document.getElementById("clientName").textContent =
+        document.getElementById(
+          "clientName"
+        ).textContent =
           "Carte introuvable";
 
         return;
@@ -619,6 +937,11 @@
 
 
       try {
+
+
+        /* =========================
+           APPEL XANO
+        ========================= */
 
         const response =
           await fetch(
@@ -642,7 +965,10 @@
           await response.json();
 
 
-        console.log("Réponse Xano :", result);
+        console.log(
+          "Réponse Xano :",
+          result
+        );
 
 
         /* =========================
@@ -655,7 +981,9 @@
           result.length === 0
         ) {
 
-          document.getElementById("clientName").textContent =
+          document.getElementById(
+            "clientName"
+          ).textContent =
             "Carte introuvable";
 
           return;
@@ -666,12 +994,15 @@
           result[0];
 
 
-        console.log("Carte :", card);
+        console.log(
+          "Carte :",
+          card
+        );
 
 
-        /* =========================
+        /* ==================================================
            NOM
-        ========================= */
+        ================================================== */
 
         if (card.client_name) {
 
@@ -683,9 +1014,9 @@
         }
 
 
-        /* =========================
+        /* ==================================================
            LOGO
-        ========================= */
+        ================================================== */
 
         if (card.logo_url) {
 
@@ -704,9 +1035,9 @@
         }
 
 
-        /* =========================
+        /* ==================================================
            ADRESSE
-        ========================= */
+        ================================================== */
 
         if (card.address) {
 
@@ -719,19 +1050,21 @@
           document.getElementById(
             "addressContainer"
           ).style.display =
-            "block";
+            "flex";
 
         }
 
 
-        /* =========================
+        /* ==================================================
            TELEPHONE
-        ========================= */
+        ================================================== */
 
         if (card.phone) {
 
           const phoneElement =
-            document.getElementById("phone");
+            document.getElementById(
+              "phone"
+            );
 
 
           phoneElement.textContent =
@@ -740,20 +1073,23 @@
 
           phoneElement.href =
             "tel:" +
-            card.phone.replace(/\s+/g, "");
+            card.phone.replace(
+              /\s+/g,
+              ""
+            );
 
 
           document.getElementById(
             "phoneContainer"
           ).style.display =
-            "block";
+            "flex";
 
         }
 
 
-        /* =========================
-           SITE WEB - INFOS
-        ========================= */
+        /* ==================================================
+           SITE WEB DANS LES INFOS
+        ================================================== */
 
         if (card.website_url) {
 
@@ -765,8 +1101,14 @@
 
           websiteInfo.textContent =
             card.website_url
-              .replace(/^https?:\/\//, "")
-              .replace(/\/$/, "");
+              .replace(
+                /^https?:\/\//,
+                ""
+              )
+              .replace(
+                /\/$/,
+                ""
+              );
 
 
           websiteInfo.href =
@@ -776,14 +1118,14 @@
           document.getElementById(
             "websiteInfoContainer"
           ).style.display =
-            "block";
+            "flex";
 
         }
 
 
-        /* =========================
+        /* ==================================================
            DESCRIPTION
-        ========================= */
+        ================================================== */
 
         if (card.description) {
 
@@ -803,9 +1145,16 @@
         }
 
 
-        /* =========================
-           LIENS
-        ========================= */
+        /* ==================================================
+           BOUTONS
+           
+           IMPORTANT :
+           destination_url N'EST PAS utilisé ici.
+           
+           Il reste uniquement le lien de destination
+           de la puce NFC / du QR code.
+        ================================================== */
+
 
         setLink(
           "google",
@@ -850,20 +1199,16 @@
 
 
         setLink(
-          "services",
-          card.destination_url
-        );
-
-
-        setLink(
           "whatsapp",
           card.whatsapp_url
         );
+
 
       }
 
 
       catch (error) {
+
 
         console.error(
           "Erreur :",
@@ -881,22 +1226,30 @@
     }
 
 
-    /* =========================
-       AFFICHAGE DES LIENS
-    ========================= */
 
-    function setLink(id, url) {
+    /* ==================================================
+       AFFICHAGE DES BOUTONS
+    ================================================== */
+
+    function setLink(
+      id,
+      url
+    ) {
+
 
       const element =
         document.getElementById(id);
 
 
       if (!element) {
+
         return;
+
       }
 
 
-      /* Pas de lien = bouton caché */
+      /* Pas de lien :
+         on cache le bouton */
 
       if (!url) {
 
@@ -914,8 +1267,7 @@
         url;
 
 
-      /* IMPORTANT :
-         afficher le bouton */
+      /* On affiche le bouton */
 
       element.style.display =
         "flex";
@@ -923,13 +1275,16 @@
     }
 
 
-    /* =========================
+
+    /* ==================================================
        LANCEMENT
-    ========================= */
+    ================================================== */
 
     loadCard();
 
+
   </script>
+
 
 </body>
 

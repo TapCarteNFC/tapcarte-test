@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Tap’Carte</title>
 
-  <!-- Icônes Font Awesome -->
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -20,12 +21,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: #f7f7f5;
       color: #1c1c1c;
     }
@@ -39,7 +35,7 @@
     }
 
     /* =========================
-       PROFIL
+       HEADER
     ========================= */
 
     .profile {
@@ -52,14 +48,11 @@
       background: #ffffff;
       border: 1px solid #eeeeee;
       border-radius: 22px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       margin-bottom: 20px;
       overflow: hidden;
-
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
     }
 
@@ -74,19 +67,16 @@
       height: 65px;
       border-radius: 18px;
       background: #f1f1ef;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 21px;
       font-weight: 700;
-      color: #333333;
+      color: #333;
     }
 
     .client-name {
       margin: 0;
-
       font-size: 25px;
       line-height: 1.2;
       font-weight: 700;
@@ -95,18 +85,12 @@
 
     .contact-info {
       margin-top: 10px;
-
       display: flex;
       flex-direction: column;
       gap: 5px;
-
-      color: #777777;
+      color: #777;
       font-size: 13px;
       line-height: 1.4;
-    }
-
-    .contact-info > div {
-      display: none;
     }
 
     .contact-info a {
@@ -114,22 +98,16 @@
       text-decoration: none;
     }
 
-    .contact-info i {
-      margin-right: 5px;
-      font-size: 11px;
-    }
-
     .description {
       margin: 18px auto 25px;
       max-width: 360px;
-
-      color: #666666;
+      color: #666;
       font-size: 14px;
       line-height: 1.55;
     }
 
     /* =========================
-       LIENS
+       LINKS
     ========================= */
 
     .links {
@@ -141,14 +119,13 @@
     .link {
       width: 100%;
       min-height: 65px;
-
       padding: 9px 14px 9px 12px;
 
       background: #ffffff;
       border: 1px solid #eeeeee;
       border-radius: 17px;
 
-      color: #222222;
+      color: #222;
       text-decoration: none;
 
       display: none;
@@ -193,13 +170,13 @@
     }
 
     .link-arrow {
-      color: #999999;
+      color: #999;
       font-size: 13px;
       margin-left: 10px;
     }
 
     /* =========================
-       COULEURS ICONES
+       ICON COLORS
     ========================= */
 
     .google {
@@ -214,7 +191,7 @@
 
     .tiktok {
       background: #eeeeee;
-      color: #111111;
+      color: #111;
     }
 
     .facebook {
@@ -229,7 +206,7 @@
 
     .website {
       background: #f1f1f1;
-      color: #555555;
+      color: #555;
     }
 
     .tripadvisor {
@@ -244,7 +221,7 @@
 
     .services {
       background: #f4f1ed;
-      color: #555555;
+      color: #555;
     }
 
     /* =========================
@@ -253,26 +230,24 @@
 
     .footer {
       text-align: center;
-
       margin-top: 32px;
-
       color: #a0a0a0;
       font-size: 10.5px;
       letter-spacing: 0.3px;
     }
 
     .footer strong {
-      color: #555555;
+      color: #555;
       font-weight: 600;
     }
 
     /* =========================
-       ERREUR
+       ERROR
     ========================= */
 
     .error {
       text-align: center;
-      color: #777777;
+      color: #777;
       margin-top: 40px;
     }
   </style>
@@ -281,659 +256,681 @@
 
 <body>
 
-<main class="page">
+  <main class="page">
+
+    <!-- =========================
+         PROFILE
+    ========================= -->
+
+    <section class="profile">
+
+      <div class="logo-container" id="logoContainer">
+
+        <div class="default-logo" id="defaultLogo">
+          TC
+        </div>
+
+      </div>
+
+
+      <h1 class="client-name" id="clientName">
+        Tap’Carte
+      </h1>
+
+
+      <div class="contact-info">
+
+        <!-- ADDRESS -->
+
+        <div id="addressContainer" style="display: none;">
+
+          <i class="fa-solid fa-location-dot"></i>
+
+          <span id="address"></span>
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div id="phoneContainer" style="display: none;">
+
+          <i class="fa-solid fa-phone"></i>
+
+          <a
+            id="phone"
+            href=""
+          ></a>
+
+        </div>
+
+
+        <!-- WEBSITE -->
+
+        <div id="websiteInfoContainer" style="display: none;">
+
+          <i class="fa-solid fa-globe"></i>
+
+          <a
+            id="websiteInfo"
+            href=""
+            target="_blank"
+          ></a>
+
+        </div>
+
+      </div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div
+        class="description"
+        id="description"
+        style="display: none;"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         LINKS
+    ========================= -->
+
+    <section class="links">
+
+
+      <!-- GOOGLE -->
+
+      <a
+        class="link"
+        id="google"
+        target="_blank"
+      >
+
+        <div class="icon google">
+          <i class="fa-brands fa-google"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Laisser un avis
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- TRIPADVISOR -->
+
+      <a
+        class="link"
+        id="tripadvisor"
+        target="_blank"
+      >
+
+        <div class="icon tripadvisor">
+          <i class="fa-brands fa-tripadvisor"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            TripAdvisor
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- INSTAGRAM -->
+
+      <a
+        class="link"
+        id="instagram"
+        target="_blank"
+      >
+
+        <div class="icon instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Instagram
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- TIKTOK -->
+
+      <a
+        class="link"
+        id="tiktok"
+        target="_blank"
+      >
+
+        <div class="icon tiktok">
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            TikTok
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- FACEBOOK -->
+
+      <a
+        class="link"
+        id="facebook"
+        target="_blank"
+      >
+
+        <div class="icon facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Facebook
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- BOOKING -->
+
+      <a
+        class="link"
+        id="booking"
+        target="_blank"
+      >
+
+        <div class="icon booking">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Prendre rendez-vous
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- WEBSITE -->
+
+      <a
+        class="link"
+        id="website"
+        target="_blank"
+      >
+
+        <div class="icon website">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Site internet
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- SERVICES -->
+
+      <a
+        class="link"
+        id="services"
+        target="_blank"
+      >
+
+        <div class="icon services">
+          <i class="fa-solid fa-list"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            Découvrir nos services
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+
+      <!-- WHATSAPP -->
+
+      <a
+        class="link"
+        id="whatsapp"
+        target="_blank"
+      >
+
+        <div class="icon whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+
+        <div class="link-content">
+          <div class="link-title">
+            WhatsApp
+          </div>
+        </div>
+
+        <div class="link-arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+      </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+      NFC by <strong>Tap’Carte</strong>
+    </footer>
+
+  </main>
+
 
   <!-- =========================
-       PROFIL
+       JAVASCRIPT
   ========================= -->
 
-  <section class="profile">
+  <script>
 
-    <div class="logo-container" id="logoContainer">
+    /* =========================
+       XANO
+    ========================= */
 
-      <div class="default-logo" id="defaultLogo">
-        TC
-      </div>
+    const API_URL =
+      "https://x8ki-letl-twmt.n7.xano.io/api:card/get_card";
 
-    </div>
 
+    /* =========================
+       RECUPERATION DU SLUG
+    ========================= */
 
-    <h1 class="client-name" id="clientName">
-      Tap’Carte
-    </h1>
+    const params =
+      new URLSearchParams(window.location.search);
 
+    const slug =
+      params.get("slug");
 
-    <div class="contact-info">
 
-      <!-- Adresse -->
-      <div id="addressContainer">
-        <i class="fa-solid fa-location-dot"></i>
-        <span id="address"></span>
-      </div>
+    /* =========================
+       CHARGEMENT DE LA CARTE
+    ========================= */
 
-      <!-- Téléphone -->
-      <div id="phoneContainer">
-        <i class="fa-solid fa-phone"></i>
-        <a id="phone" href=""></a>
-      </div>
+    async function loadCard() {
 
-      <!-- Site internet -->
-      <div id="websiteInfoContainer">
-        <i class="fa-solid fa-globe"></i>
-        <a
-          id="websiteInfo"
-          href=""
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a>
-      </div>
+      if (!slug) {
 
-    </div>
-
-
-    <!-- Description -->
-    <div
-      class="description"
-      id="description"
-      style="display: none;"
-    ></div>
-
-  </section>
-
-
-  <!-- =========================
-       LIENS
-  ========================= -->
-
-  <section class="links">
-
-    <!-- GOOGLE -->
-    <a
-      class="link"
-      id="google"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon google">
-        <i class="fa-brands fa-google"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Laisser un avis
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- TRIPADVISOR -->
-    <a
-      class="link"
-      id="tripadvisor"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon tripadvisor">
-        <i class="fa-brands fa-tripadvisor"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          TripAdvisor
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- INSTAGRAM -->
-    <a
-      class="link"
-      id="instagram"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Instagram
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- TIKTOK -->
-    <a
-      class="link"
-      id="tiktok"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon tiktok">
-        <i class="fa-brands fa-tiktok"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          TikTok
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- FACEBOOK -->
-    <a
-      class="link"
-      id="facebook"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Facebook
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- BOOKING -->
-    <a
-      class="link"
-      id="booking"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon booking">
-        <i class="fa-solid fa-calendar-check"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Prendre rendez-vous
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- SITE INTERNET -->
-    <a
-      class="link"
-      id="website"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon website">
-        <i class="fa-solid fa-globe"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Site internet
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- SERVICES -->
-    <a
-      class="link"
-      id="services"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon services">
-        <i class="fa-solid fa-list"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          Découvrir nos services
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-
-    <!-- WHATSAPP -->
-    <a
-      class="link"
-      id="whatsapp"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <div class="icon whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </div>
-
-      <div class="link-content">
-        <div class="link-title">
-          WhatsApp
-        </div>
-      </div>
-
-      <div class="link-arrow">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-    </a>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer class="footer">
-    NFC by <strong>Tap’Carte</strong>
-  </footer>
-
-</main>
-
-
-<script>
-
-  /* =========================
-     XANO
-  ========================= */
-
-  const API_URL =
-    "https://x8ki-letl-twmt.n7.xano.io/api:card/get_card";
-
-
-  /* =========================
-     SLUG
-  ========================= */
-
-  const params =
-    new URLSearchParams(window.location.search);
-
-  const slug =
-    params.get("slug");
-
-
-  /* =========================
-     CHARGEMENT DE LA CARTE
-  ========================= */
-
-  async function loadCard() {
-
-    if (!slug) {
-
-      console.log("Aucun slug trouvé dans l'URL.");
-
-      return;
-    }
-
-
-    try {
-
-      const response =
-        await fetch(
-          API_URL +
-          "?slug=" +
-          encodeURIComponent(slug)
-        );
-
-
-      console.log(
-        "Réponse Xano :",
-        response.status
-      );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          "Erreur HTTP " + response.status
-        );
-
-      }
-
-
-      const result =
-        await response.json();
-
-
-      console.log(
-        "Données Xano :",
-        result
-      );
-
-
-      /* =========================
-         VERIFICATION
-      ========================= */
-
-      if (
-        !Array.isArray(result) ||
-        result.length === 0
-      ) {
-
-        document.getElementById(
-          "clientName"
-        ).textContent =
+        document.getElementById("clientName").textContent =
           "Carte introuvable";
 
         return;
       }
 
 
-      const card =
-        result[0];
+      try {
+
+        const response =
+          await fetch(
+            API_URL +
+            "?slug=" +
+            encodeURIComponent(slug)
+          );
 
 
-      /* =========================
-         NOM DU CLIENT
-      ========================= */
+        if (!response.ok) {
 
-      if (card.client_name) {
+          throw new Error(
+            "Erreur API : " +
+            response.status
+          );
+
+        }
+
+
+        const result =
+          await response.json();
+
+
+        console.log("Réponse Xano :", result);
+
+
+        /* =========================
+           VERIFICATION
+        ========================= */
+
+        if (
+          !result ||
+          !Array.isArray(result) ||
+          result.length === 0
+        ) {
+
+          document.getElementById("clientName").textContent =
+            "Carte introuvable";
+
+          return;
+        }
+
+
+        const card =
+          result[0];
+
+
+        console.log("Carte :", card);
+
+
+        /* =========================
+           NOM
+        ========================= */
+
+        if (card.client_name) {
+
+          document.getElementById(
+            "clientName"
+          ).textContent =
+            card.client_name;
+
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        if (card.logo_url) {
+
+          document.getElementById(
+            "logoContainer"
+          ).innerHTML = `
+
+            <img
+              class="logo"
+              src="${card.logo_url}"
+              alt="Logo ${card.client_name || ""}"
+            >
+
+          `;
+
+        }
+
+
+        /* =========================
+           ADRESSE
+        ========================= */
+
+        if (card.address) {
+
+          document.getElementById(
+            "address"
+          ).textContent =
+            card.address;
+
+
+          document.getElementById(
+            "addressContainer"
+          ).style.display =
+            "block";
+
+        }
+
+
+        /* =========================
+           TELEPHONE
+        ========================= */
+
+        if (card.phone) {
+
+          const phoneElement =
+            document.getElementById("phone");
+
+
+          phoneElement.textContent =
+            card.phone;
+
+
+          phoneElement.href =
+            "tel:" +
+            card.phone.replace(/\s+/g, "");
+
+
+          document.getElementById(
+            "phoneContainer"
+          ).style.display =
+            "block";
+
+        }
+
+
+        /* =========================
+           SITE WEB - INFOS
+        ========================= */
+
+        if (card.website_url) {
+
+          const websiteInfo =
+            document.getElementById(
+              "websiteInfo"
+            );
+
+
+          websiteInfo.textContent =
+            card.website_url
+              .replace(/^https?:\/\//, "")
+              .replace(/\/$/, "");
+
+
+          websiteInfo.href =
+            card.website_url;
+
+
+          document.getElementById(
+            "websiteInfoContainer"
+          ).style.display =
+            "block";
+
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        if (card.description) {
+
+          const description =
+            document.getElementById(
+              "description"
+            );
+
+
+          description.textContent =
+            card.description;
+
+
+          description.style.display =
+            "block";
+
+        }
+
+
+        /* =========================
+           LIENS
+        ========================= */
+
+        setLink(
+          "google",
+          card.google_url
+        );
+
+
+        setLink(
+          "tripadvisor",
+          card.tripadvisor_url
+        );
+
+
+        setLink(
+          "instagram",
+          card.instagram_url
+        );
+
+
+        setLink(
+          "tiktok",
+          card.tiktok_url
+        );
+
+
+        setLink(
+          "facebook",
+          card.facebook_url
+        );
+
+
+        setLink(
+          "booking",
+          card.booking_url
+        );
+
+
+        setLink(
+          "website",
+          card.website_url
+        );
+
+
+        setLink(
+          "services",
+          card.destination_url
+        );
+
+
+        setLink(
+          "whatsapp",
+          card.whatsapp_url
+        );
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          "Erreur :",
+          error
+        );
+
 
         document.getElementById(
           "clientName"
         ).textContent =
-          card.client_name;
+          "Une erreur est survenue";
 
       }
-
-
-      /* =========================
-         LOGO
-      ========================= */
-
-      if (card.logo_url) {
-
-        document.getElementById(
-          "logoContainer"
-        ).innerHTML = `
-
-          <img
-            class="logo"
-            src="${card.logo_url}"
-            alt="Logo"
-          >
-
-        `;
-
-      }
-
-
-      /* =========================
-         ADRESSE
-      ========================= */
-
-      if (card.address) {
-
-        const addressContainer =
-          document.getElementById(
-            "addressContainer"
-          );
-
-        document.getElementById(
-          "address"
-        ).textContent =
-          card.address;
-
-        addressContainer.style.display =
-          "block";
-
-      }
-
-
-      /* =========================
-         TELEPHONE
-      ========================= */
-
-      if (card.phone) {
-
-        const phone =
-          document.getElementById(
-            "phone"
-          );
-
-        phone.textContent =
-          card.phone;
-
-        phone.href =
-          "tel:" +
-          card.phone.replace(
-            /\s+/g,
-            ""
-          );
-
-        document.getElementById(
-          "phoneContainer"
-        ).style.display =
-          "block";
-
-      }
-
-
-      /* =========================
-         SITE INTERNET DANS LE PROFIL
-      ========================= */
-
-      if (card.website_url) {
-
-        const websiteInfo =
-          document.getElementById(
-            "websiteInfo"
-          );
-
-        websiteInfo.textContent =
-          card.website_url
-            .replace(
-              /^https?:\/\//,
-              ""
-            )
-            .replace(
-              /\/$/,
-              ""
-            );
-
-        websiteInfo.href =
-          card.website_url;
-
-        document.getElementById(
-          "websiteInfoContainer"
-        ).style.display =
-          "block";
-
-      }
-
-
-      /* =========================
-         DESCRIPTION
-      ========================= */
-
-      if (card.description) {
-
-        const description =
-          document.getElementById(
-            "description"
-          );
-
-        description.textContent =
-          card.description;
-
-        description.style.display =
-          "block";
-
-      }
-
-
-      /* =========================
-         BOUTONS
-      ========================= */
-
-      setLink(
-        "google",
-        card.google_url
-      );
-
-      setLink(
-        "tripadvisor",
-        card.tripadvisor_url
-      );
-
-      setLink(
-        "instagram",
-        card.instagram_url
-      );
-
-      setLink(
-        "tiktok",
-        card.tiktok_url
-      );
-
-      setLink(
-        "facebook",
-        card.facebook_url
-      );
-
-      setLink(
-        "booking",
-        card.booking_url
-      );
-
-      setLink(
-        "website",
-        card.website_url
-      );
-
-      setLink(
-        "services",
-        card.destination_url
-      );
-
-      setLink(
-        "whatsapp",
-        card.whatsapp_url
-      );
 
     }
 
-    catch (error) {
 
-      console.error(
-        "Erreur lors du chargement :",
-        error
-      );
+    /* =========================
+       AFFICHAGE DES LIENS
+    ========================= */
 
-      document.getElementById(
-        "clientName"
-      ).textContent =
-        "Erreur de chargement";
+    function setLink(id, url) {
 
-    }
-
-  }
+      const element =
+        document.getElementById(id);
 
 
-  /* =========================
-     AFFICHAGE DES LIENS
-  ========================= */
-
-  function setLink(
-    id,
-    url
-  ) {
-
-    const element =
-      document.getElementById(id);
+      if (!element) {
+        return;
+      }
 
 
-    if (!element) {
+      /* Pas de lien = bouton caché */
 
-      return;
-    }
+      if (!url) {
+
+        element.style.display =
+          "none";
+
+        return;
+
+      }
 
 
-    /* Pas de lien :
-       bouton caché */
+      /* Lien présent */
 
-    if (!url) {
+      element.href =
+        url;
+
+
+      /* IMPORTANT :
+         afficher le bouton */
 
       element.style.display =
-        "none";
+        "flex";
 
-      return;
     }
 
 
-    /* Lien présent :
-       bouton visible */
+    /* =========================
+       LANCEMENT
+    ========================= */
 
-    element.href =
-      url;
+    loadCard();
 
-    element.style.display =
-      "flex";
-
-  }
-
-
-  /* =========================
-     LANCEMENT
-  ========================= */
-
-  loadCard();
-
-</script>
+  </script>
 
 </body>
+
 </html>

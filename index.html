@@ -1,189 +1,93 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Tap’Carte</title>
-  <meta name="theme-color" content="#f7f6f3" />
-  <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202124;background:#f7f6f3}
-    body{display:flex;justify-content:center;padding:28px 16px 40px}
-    a{text-decoration:none;color:inherit}
-    .page{width:100%;max-width:430px}
-    .profile{text-align:center;padding:4px 8px 18px}
-    .logo-wrap{width:118px;height:118px;margin:0 auto 16px;background:#fff;border:1px solid #e7e9ec;border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 18px rgba(31,31,31,.05);overflow:hidden}
-    .logo-wrap img{width:100%;height:100%;object-fit:contain;padding:12px}
-    .logo-fallback{font-size:27px;font-weight:700;letter-spacing:-.05em}
-    .name{font-size:25px;line-height:1.12;font-weight:700;letter-spacing:-.035em;margin:0 0 8px}
-    .meta{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;color:#7a7d82;font-size:14px;line-height:1.35}
-    .meta span{display:inline-flex;align-items:center;gap:5px}
-    .meta .dot{font-size:10px;color:#b5b7bb}
-    .description{margin:16px auto 20px;max-width:350px;font-size:14px;line-height:1.55;color:#686b70}
-    .actions{display:flex;flex-direction:column;gap:10px}
-    .action{min-height:64px;width:100%;display:flex;align-items:center;gap:13px;padding:10px 14px;background:#fff;border:1px solid #e7e9ec;border-radius:16px;box-shadow:0 4px 12px rgba(31,31,31,.06);transition:transform .15s ease,box-shadow .15s ease}
-    .action:active{transform:scale(.985)}
-    .action:hover{box-shadow:0 6px 16px rgba(31,31,31,.08)}
-    .icon-circle{width:44px;height:44px;min-width:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-    .icon-circle svg{width:22px;height:22px;display:block}
-    .action-text{text-align:left;flex:1;min-width:0;font-size:14px;font-weight:600;letter-spacing:-.02em}
-    .arrow{width:18px;height:18px;min-width:18px;color:#7a7d82}
-    .arrow svg{width:100%;height:100%}
-    .save{margin-top:14px;background:#fffaf0;border-color:#e8dda8;box-shadow:0 3px 10px rgba(104,83,24,.06)}
-    .save .icon-circle{background:#fff4c9}
-    .save .icon-circle svg{color:#d7a928}
-    .footer{text-align:center;margin-top:22px;color:#96999e;font-size:11px;letter-spacing:.03em}
-    .loading,.error{text-align:center;padding:80px 20px;color:#7a7d82;font-size:14px}
-    .error strong{display:block;color:#202124;font-size:17px;margin-bottom:8px}
-    .modal-backdrop{position:fixed;inset:0;background:rgba(20,20,20,.35);display:none;align-items:flex-end;justify-content:center;padding:16px;z-index:20}
-    .modal-backdrop.open{display:flex}
-    .modal{width:min(430px,100%);background:#fff;border-radius:22px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,.18)}
-    .modal h2{font-size:20px;margin:0 0 8px;letter-spacing:-.025em}
-    .modal p{font-size:14px;line-height:1.5;color:#686b70;margin:0 0 16px}
-    .steps{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-    .step{padding:11px 12px;border-radius:12px;background:#f7f6f3;font-size:13px;line-height:1.4}
-    .close{width:100%;border:0;border-radius:13px;background:#202124;color:#fff;padding:13px;font-size:14px;font-weight:600;cursor:pointer}
-    @media(min-width:700px){body{padding-top:42px}.page{max-width:430px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tap’Carte</title>
+<meta name="theme-color" content="#f7f6f3">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#f7f6f3;color:#202124;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{padding:42px 16px 36px}
+a{text-decoration:none;color:inherit}
+.page{width:100%;max-width:500px;margin:0 auto}
+.profile{text-align:center;padding:4px 8px 18px}
+.logo-wrap{width:136px;height:136px;margin:0 auto 18px;background:#fff;border:1px solid #e7e9ec;border-radius:25px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 18px rgba(31,31,31,.055);overflow:hidden}
+.logo-wrap img{width:100%;height:100%;object-fit:contain;padding:13px}
+.logo-fallback{font-size:30px;font-weight:750;letter-spacing:-.05em}
+.name{margin:0;font-size:28px;line-height:1.12;font-weight:750;letter-spacing:-.045em}
+.category{margin-top:7px;color:#7a7d82;font-size:14px;font-weight:500}
+.info{margin:14px auto 0;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px 12px;color:#7a7d82;font-size:14px;line-height:1.35}
+.info-item{display:inline-flex;align-items:center;gap:5px}
+.info-item svg{width:15px;height:15px;display:block;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.info-dot{color:#b5b7bb;font-size:11px}
+.description{max-width:390px;margin:17px auto 0;color:#686b70;font-size:14px;line-height:1.55}
+.hours{max-width:390px;margin:8px auto 0;color:#7a7d82;font-size:12.5px;line-height:1.4}
+.actions{display:flex;flex-direction:column;gap:10px}
+.action{min-height:64px;width:100%;display:flex;align-items:center;gap:13px;padding:10px 14px;background:#fff;border:1px solid #e7e9ec;border-radius:16px;box-shadow:0 4px 12px rgba(31,31,31,.06);transition:transform .15s ease,box-shadow .15s ease}
+.action:active{transform:scale(.985)}
+.action:hover{box-shadow:0 6px 16px rgba(31,31,31,.08)}
+.icon-circle{width:44px;height:44px;min-width:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.icon-circle svg{width:23px;height:23px;display:block}
+.action-text{flex:1;min-width:0;text-align:left;font-size:14px;font-weight:600;letter-spacing:-.02em}
+.arrow{width:18px;height:18px;min-width:18px;color:#7a7d82}
+.arrow svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.save{margin-top:4px;background:#fffaf0;border-color:#e8dda8;box-shadow:0 3px 10px rgba(104,83,24,.06)}
+.save .icon-circle{background:#fff4c9}.save .icon-circle svg{color:#d7a928}
+.footer{text-align:center;margin-top:22px;color:#96999e;font-size:11px;letter-spacing:.03em}
+.hidden{display:none!important}
+.modal-backdrop{position:fixed;inset:0;background:rgba(20,20,20,.28);display:none;align-items:flex-end;justify-content:center;padding:16px;z-index:50}
+.modal-backdrop.open{display:flex}
+.modal{width:min(430px,100%);background:#fff;border-radius:22px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,.18)}
+.modal h2{font-size:20px;margin:0 0 8px;letter-spacing:-.025em}.modal p{font-size:14px;line-height:1.5;color:#686b70;margin:0 0 16px}
+.steps{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}.step{padding:11px 12px;border-radius:12px;background:#f7f6f3;font-size:13px;line-height:1.4}.close{width:100%;border:0;border-radius:13px;background:#202124;color:#fff;padding:13px;font-size:14px;font-weight:600;cursor:pointer}
+.loading,.error{text-align:center;padding:80px 20px;color:#7a7d82;font-size:14px}.error strong{display:block;color:#202124;font-size:17px;margin-bottom:8px}
+@media(max-width:600px){body{padding-top:26px}.page{max-width:430px}.logo-wrap{width:118px;height:118px}.name{font-size:25px}}
+</style>
 </head>
 <body>
-  <main class="page" id="app">
-    <div class="loading">Chargement…</div>
-  </main>
-
-  <div class="modal-backdrop" id="saveModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="saveTitle">
-      <h2 id="saveTitle">Enregistrer cette carte</h2>
-      <p>Ajoutez cette page à vos favoris ou à votre écran d’accueil pour la retrouver facilement.</p>
-      <div class="steps">
-        <div class="step"><strong>iPhone :</strong> Partager → Sur l’écran d’accueil.</div>
-        <div class="step"><strong>Android :</strong> ⋮ → Ajouter à l’écran d’accueil.</div>
-        <div class="step"><strong>Ordinateur :</strong> Ctrl+D (Windows) ou ⌘+D (Mac).</div>
-      </div>
-      <button class="close" id="closeModal">Fermer</button>
-    </div>
-  </div>
-
-  <script>
-    const API_URL = 'https://x8ki-letl-twmt.n7.xano.io/api:card/get_card';
-    const params = new URLSearchParams(window.location.search);
-    const slug = (params.get('slug') || 'TC0001').trim();
-
-    const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-    const first = (...values) => values.find(v => v !== undefined && v !== null && String(v).trim() !== '') || '';
-
-    function normalizeUrl(url){
-      if(!url) return '';
-      const v=String(url).trim();
-      if(/^https?:\/\//i.test(v) || /^(mailto:|tel:|whatsapp:)/i.test(v)) return v;
-      return 'https://' + v;
-    }
-
-    const icons = {
-      menu: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v7M5 3v4a2 2 0 0 0 4 0V3M7 10v11M17 3v18M17 3c-2 2-3 4-3 7h3"/></svg>`,
-      booking: `<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#003b95"/><path d="M7 6.2h4.1c2.5 0 4 1.3 4 3.2 0 1.2-.6 2.2-1.7 2.7 1.4.4 2.3 1.5 2.3 2.9 0 2.1-1.7 3.5-4.5 3.5H7V6.2Zm2.4 2v3h1.5c1.2 0 1.8-.5 1.8-1.5s-.6-1.5-1.8-1.5H9.4Zm0 5v3.3h1.8c1.4 0 2.1-.6 2.1-1.7 0-1.1-.7-1.6-2.1-1.6H9.4Z" fill="#fff"/></svg>`,
-      whatsapp:`<svg viewBox="0 0 24 24"><path fill="#25D366" d="M12 2a9.8 9.8 0 0 0-8.49 14.7L2 22l5.45-1.43A9.8 9.8 0 1 0 12 2Z"/><path fill="#fff" d="M16.6 13.8c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-1.48-.74-2.45-1.32-3.43-2.99-.26-.45.26-.42.74-1.39.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.88-.21-.5-.42-.43-.57-.44h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08s.89 2.41 1.01 2.58c.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.53.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>`,
-      instagram:`<svg viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f58529"/><stop offset=".45" stop-color="#dd2a7b"/><stop offset="1" stop-color="#8134af"/></linearGradient></defs><rect x="3" y="3" width="18" height="18" rx="5" fill="url(#ig)"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="17.3" cy="6.8" r="1.2" fill="#fff"/></svg>`,
-      tiktok:`<svg viewBox="0 0 24 24"><path fill="#111" d="M14 3h3.1c.2 1.6 1.1 2.8 2.9 3.5v3.1c-1.1-.1-2.1-.5-3-1.1v6.3c0 4.1-2.6 6.2-6 6.2-3 0-5.4-2.1-5.4-5.1 0-3.2 2.7-5.2 6.1-4.9v3.2c-1.6-.2-2.8.5-2.8 1.7 0 1.1.9 1.9 2.1 1.9 1.5 0 2.2-.9 2.2-3V3Z"/></svg>`,
-      facebook:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1877F2"/><path fill="#fff" d="M13.4 20v-7h2.3l.35-2.7H13.4V8.6c0-.78.22-1.3 1.36-1.3h1.45V4.88c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.47 1.26-3.47 3.57v1.95H8.35V13h2.31v7h2.74Z"/></svg>`,
-      google:`<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.23c0-.7-.06-1.37-.18-2H12v3.79h5.38a4.6 4.6 0 0 1-2 3.02v2.5h3.24c1.9-1.75 2.98-4.33 2.98-7.31Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.62-2.46l-3.24-2.5c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.76-5.59-4.12H3.06v2.58A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.41 13.88A6 6 0 0 1 6.1 12c0-.65.11-1.28.31-1.88V7.54H3.06A10 10 0 0 0 2 12c0 1.61.39 3.13 1.06 4.46l3.35-2.58Z"/><path fill="#EA4335" d="M12 6c1.47 0 2.79.5 3.83 1.48l2.87-2.87C16.95 2.93 14.7 2 12 2a10 10 0 0 0-8.94 5.54l3.35 2.58C7.2 7.76 9.4 6 12 6Z"/></svg>`,
-      tripadvisor:`<svg viewBox="0 0 24 24"><path fill="#34A853" d="M4 7.5h16l-1.5 2.2A6.7 6.7 0 0 1 12 19a6.7 6.7 0 0 1-6.5-9.3L4 7.5Z"/><circle cx="8.8" cy="12.2" r="2.2" fill="#fff"/><circle cx="15.2" cy="12.2" r="2.2" fill="#fff"/><circle cx="8.8" cy="12.2" r=".9" fill="#222"/><circle cx="15.2" cy="12.2" r=".9" fill="#222"/></svg>`,
-      website:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z"/></svg>`,
-      phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 3.5 9 3l1.8 4.3-2.1 1.5a14 14 0 0 0 6.5 6.5l1.5-2.1L21 15l-.5 2.4c-.3 1.5-1.7 2.5-3.2 2.3C9.9 18.7 5.3 14.1 4.3 6.7 4.1 5.2 5.1 3.8 6.6 3.5Z"/></svg>`,
-      map:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18 3.8 21V6L9 3l6 3 5.2-3v15L15 21l-6-3Z"/><path d="M9 3v15M15 6v15"/></svg>`,
-      calendar:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 9h18"/></svg>`,
-      cart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.5L20 8H6"/><circle cx="10" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></svg>`,
-      star:`<svg viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3.1-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.5Z"/></svg>`,
-      arrow:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`
-    };
-
-    const buttonDefs = [
-      {field:'menu_url', label:'Voir notre menu', icon:'menu', bg:'#fff1df'},
-      {field:'appointment_url', label:'Prendre rendez-vous', icon:'calendar', bg:'#eee8fb'},
-      {field:'booking_url', label:'Réservez via Booking', icon:'booking', bg:'#e5efff'},
-      {field:'google_url', label:'Laissez-nous un avis sur Google', icon:'google', bg:'#fff1df'},
-      {field:'tripadvisor_url', label:'Découvrez-nous sur TripAdvisor', icon:'tripadvisor', bg:'#e4f5ea'},
-      {field:'instagram_url', label:'Suivez-nous sur Instagram', icon:'instagram', bg:'#f5e2e8'},
-      {field:'whatsapp_url', label:'Contactez-nous sur WhatsApp', icon:'whatsapp', bg:'#e0f2e6'},
-      {field:'tiktok_url', label:'Suivez-nous sur TikTok', icon:'tiktok', bg:'#eeeeee'},
-      {field:'facebook_url', label:'Suivez-nous sur Facebook', icon:'facebook', bg:'#e1ecfa'},
-      {field:'website_url', label:'Visitez notre site internet', icon:'website', bg:'#e8edf1'},
-      {field:'order_url', label:'Commander', icon:'cart', bg:'#fff1df'},
-      {field:'delivery_url', label:'Livraison', icon:'cart', bg:'#e4f5ea'},
-      {field:'services_url', label:'Nos services', icon:'website', bg:'#eee8fb'},
-      {field:'price_list_url', label:'Voir nos tarifs', icon:'website', bg:'#f2eadf'}
-    ];
-
-    function makeAction(def, card){
-      const raw=card[def.field];
-      if(!raw) return '';
-      const href=normalizeUrl(raw);
-      return `<a class="action" href="${esc(href)}" target="_blank" rel="noopener noreferrer">
-        <span class="icon-circle" style="background:${def.bg}">${icons[def.icon]}</span>
-        <span class="action-text">${esc(def.label)}</span>
-        <span class="arrow">${icons.arrow}</span>
-      </a>`;
-    }
-
-    function render(card){
-      const name=first(card.client_name,card.name,'Tap’Carte');
-      const logo=first(card.logo_url);
-      const address=first(card.address,card.city);
-      const phone=first(card.phone);
-      const description=first(card.description);
-      const actions=buttonDefs.map(d=>makeAction(d,card)).join('');
-
-      document.title = `${name} — Tap’Carte`;
-      document.getElementById('app').innerHTML=`
-        <section class="profile">
-          <div class="logo-wrap">
-            ${logo ? `<img src="${esc(logo)}" alt="Logo ${esc(name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">` : ''}
-            <div class="logo-fallback" style="display:${logo?'none':'block'}">${esc(name.charAt(0).toUpperCase())}</div>
-          </div>
-          <h1 class="name">${esc(name)}</h1>
-          <div class="meta">
-            ${address ? `<span>${icons.map}<span>${esc(address)}</span></span>` : ''}
-            ${address && phone ? `<span class="dot">•</span>` : ''}
-            ${phone ? `<a href="tel:${esc(phone)}">${icons.phone}<span>${esc(phone)}</span></a>` : ''}
-          </div>
-          ${description ? `<p class="description">${esc(description)}</p>` : ''}
-        </section>
-
-        <section class="actions">
-          ${actions}
-          <button class="action save" id="saveButton" type="button">
-            <span class="icon-circle">${icons.star}</span>
-            <span class="action-text">Enregistrer cette carte</span>
-            <span class="arrow">${icons.arrow}</span>
-          </button>
-        </section>
-        <div class="footer">NFC by Tap’Carte</div>
-      `;
-      document.getElementById('saveButton').addEventListener('click',()=>{
-        document.getElementById('saveModal').classList.add('open');
-        document.getElementById('saveModal').setAttribute('aria-hidden','false');
-      });
-    }
-
-    async function load(){
-      try{
-        const res=await fetch(`${API_URL}?slug=${encodeURIComponent(slug)}`,{headers:{Accept:'application/json'}});
-        if(!res.ok) throw new Error('API '+res.status);
-        const data=await res.json();
-        const card=Array.isArray(data)?data[0]:data;
-        if(!card) throw new Error('Carte introuvable');
-        render(card);
-      }catch(err){
-        document.getElementById('app').innerHTML=`<div class="error"><strong>Carte introuvable</strong><span>Vérifiez le lien ou le QR code.</span></div>`;
-      }
-    }
-
-    document.getElementById('closeModal').addEventListener('click',()=>{
-      document.getElementById('saveModal').classList.remove('open');
-      document.getElementById('saveModal').setAttribute('aria-hidden','true');
-    });
-    document.getElementById('saveModal').addEventListener('click',e=>{if(e.target.id==='saveModal')document.getElementById('closeModal').click()});
-    load();
-  </script>
+<main class="page" id="app"><div class="loading">Chargement…</div></main>
+<div class="modal-backdrop" id="saveModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="saveTitle"><h2 id="saveTitle">Enregistrer cette carte</h2><p>Gardez cette carte à portée de main pour la retrouver facilement.</p><div class="steps"><div class="step"><strong>iPhone :</strong> Partager → Ajouter à l’écran d’accueil.</div><div class="step"><strong>Android :</strong> Menu ⋮ → Ajouter à l’écran d’accueil.</div><div class="step"><strong>Ordinateur :</strong> Ctrl + D sur Windows / ⌘ + D sur Mac.</div></div><button class="close" id="closeModal">Fermer</button></div></div>
+<script>
+const API_URL='https://x8ki-letl-twmt.n7.xano.io/api:card/get_card';
+const slug=(new URLSearchParams(location.search).get('slug')||'TC0001').trim();
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cleanUrl=v=>{if(!v)return '';v=String(v).trim();return v;};
+const svg={
+arrow:`<svg viewBox="0 0 24 24"><path d="M8 4l8 8-8 8"/></svg>`,
+star:`<svg viewBox="0 0 24 24"><path d="M12 3.1l2.72 5.52 6.09.89-4.41 4.3 1.04 6.07L12 17.02l-5.44 2.86 1.04-6.07-4.41-4.3 6.09-.89L12 3.1z" fill="currentColor" stroke="none"/></svg>`,
+menu:`<svg viewBox="0 0 24 24"><path d="M7 3v7M5 3v4a2 2 0 0 0 4 0V3M7 10v11M17 3v18M17 3c-2 2-3 4-3 7h3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+calendar:`<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 3.5v4M17 3.5v4M3.5 9.5h17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>`,
+booking:`<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#003b95"/><path d="M7 6.2h4.1c2.5 0 4 1.3 4 3.2 0 1.2-.6 2.2-1.7 2.7 1.4.4 2.3 1.5 2.3 2.9 0 2.1-1.7 3.5-4.5 3.5H7V6.2Zm2.4 2v3h1.5c1.2 0 1.8-.5 1.8-1.5s-.6-1.5-1.8-1.5H9.4Zm0 5v3.3h1.8c1.4 0 2.1-.6 2.1-1.7 0-1.1-.7-1.6-2.1-1.6H9.4Z" fill="#fff"/></svg>`,
+instagram:`<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="#d92d78" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="#d92d78" stroke-width="2"/><circle cx="17.3" cy="6.8" r="1.2" fill="#d92d78"/></svg>`,
+whatsapp:`<svg viewBox="0 0 24 24"><path d="M12 4a7.8 7.8 0 0 0-6.7 11.8L4 20l4.4-1.2A7.8 7.8 0 1 0 12 4Z" fill="none" stroke="#18a957" stroke-width="1.8"/><path d="M9.1 8.4c.3-.3.7-.3 1 0l1 1.4c.2.3.2.6-.1.9l-.6.6c.6 1.1 1.5 2 2.6 2.6l.6-.6c.3-.3.6-.3.9-.1l1.4 1c.3.2.3.7 0 1-.5.6-1.2.9-1.9.7-3.7-1-6.3-3.6-7.3-7.3-.2-.7.1-1.4.7-1.9Z" fill="#18a957"/></svg>`,
+tiktok:`<svg viewBox="0 0 24 24"><path d="M14 4v10.1a4 4 0 1 1-3-3.9" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"/><path d="M14 4c.6 2.2 1.9 3.7 4.2 4.1" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"/></svg>`,
+facebook:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#1877f2"/><path d="M13.2 19v-6h2l.3-2.3h-2.3V9.2c0-.7.2-1.2 1.2-1.2h1.2V5.9c-.2 0-.9-.1-1.7-.1-1.8 0-3 1.1-3 3.1v1.8H9v2.3h1.9v6h2.3Z" fill="#fff"/></svg>`,
+google:`<svg viewBox="0 0 24 24"><path d="M21 12.2c0-.7-.1-1.4-.2-2H12v3.8h5c-.2 1.2-.9 2.2-1.9 2.9v2.4h3.1c1.8-1.7 2.8-4.1 2.8-7.1Z" fill="#4285F4"/><path d="M12 21c2.6 0 4.8-.9 6.4-2.5l-3.1-2.4c-.9.6-2 1-3.3 1-2.5 0-4.6-1.7-5.4-4H3.4v2.5A9.7 9.7 0 0 0 12 21Z" fill="#34A853"/><path d="M6.6 13.1A5.9 5.9 0 0 1 6.3 12c0-.4.1-.8.2-1.1V8.4H3.4A9 9 0 0 0 2.4 12c0 1.4.4 2.8 1 4l3.2-2.9Z" fill="#FBBC05"/><path d="M12 6.9c1.4 0 2.7.5 3.7 1.5l2.8-2.8C16.8 4 14.6 3 12 3a9.7 9.7 0 0 0-8.6 5.4l3.2 2.5c.8-2.3 2.9-4 5.4-4Z" fill="#EA4335"/></svg>`,
+tripadvisor:`<svg viewBox="0 0 24 24"><path d="M4 12c2-3.2 4.7-4.8 8-4.8s6 1.6 8 4.8" fill="none" stroke="#34a853" stroke-width="1.7" stroke-linecap="round"/><circle cx="8.2" cy="13" r="3.2" fill="none" stroke="#34a853" stroke-width="1.7"/><circle cx="15.8" cy="13" r="3.2" fill="none" stroke="#34a853" stroke-width="1.7"/><circle cx="8.2" cy="13" r=".9" fill="#111"/><circle cx="15.8" cy="13" r=".9" fill="#111"/><path d="M11.4 13h1.2" stroke="#34a853" stroke-width="1.7"/></svg>`,
+website:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 12h17M12 3.5c2.4 2.5 3.5 5.3 3.5 8.5s-1.1 6-3.5 8.5c-2.4-2.5-3.5-5.3-3.5-8.5s1.1-6 3.5-8.5Z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>`,
+phone:`<svg viewBox="0 0 24 24"><path d="M7 3.8 4.8 6c-.8.8-.5 2.4.4 4.1 2.2 4 5.8 7.6 9.8 9.8 1.7.9 3.3 1.2 4.1.4l2.2-2.2c.6-.6.4-1.6-.3-2.1l-3.1-2.2c-.6-.4-1.3-.3-1.8.3l-.9 1.1c-2-1.2-3.8-3-5-5l1.1-.9c.6-.5.7-1.2.3-1.8L9.1 4.1c-.5-.7-1.5-.9-2.1-.3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`,
+map:`<svg viewBox="0 0 24 24"><path d="M12 21s6.5-6.1 6.5-11.4A6.5 6.5 0 1 0 5.5 9.6C5.5 14.9 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>`,
+cart:`<svg viewBox="0 0 24 24"><path d="M4 5h2l1.6 9.2a2 2 0 0 0 2 1.7h7.3a2 2 0 0 0 1.9-1.5L20 8H7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="19" r="1.2" fill="currentColor"/><circle cx="17" cy="19" r="1.2" fill="currentColor"/></svg>`,
+quote:`<svg viewBox="0 0 24 24"><path d="M6 4h12v16H6z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+gallery:`<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="9" r="1.4" fill="currentColor"/><path d="m6 17 4-4 2.5 2.5 2-2 3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+email:`<svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m4.5 7 7.5 5.5L19.5 7" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>`
+};
+const defs=[
+['menu_url','Voir notre menu','menu','#fff1df'],['appointment_url','Prendre rendez-vous','calendar','#eee8fb'],['google_url','Laissez-nous un avis sur Google','google','#fff1df'],['tripadvisor_url','Découvrez nos avis TripAdvisor','tripadvisor','#e4f5ea'],['instagram_url','Suivez-nous sur Instagram','instagram','#f5e2e8'],['whatsapp_url','Contactez-nous sur WhatsApp','whatsapp','#e0f2e6'],['tiktok_url','Suivez-nous sur TikTok','tiktok','#eeeeee'],['facebook_url','Retrouvez-nous sur Facebook','facebook','#e1ecfa'],['booking_url','Réservez via Booking','booking','#e5efff'],['website_url','Visitez notre site','website','#e8edf1'],['order_url','Commander','cart','#fff1df'],['delivery_url','Livraison','cart','#e4f5ea'],['services_url','Nos services','website','#eee8fb'],['price_list_url','Voir nos tarifs','website','#f2eadf'],['quote_url','Demander un devis','quote','#e4f5ea'],['gallery_url','Voir notre galerie','gallery','#f5e2e8'],['google_maps_url','Nous trouver','map','#e1ecfa'],['email_url','Nous contacter par email','email','#eee8fb']
+];
+function action(field,label,icon,bg,card){const url=cleanUrl(card[field]);if(!url)return '';return `<a class="action" href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span class="icon-circle" style="background:${bg}">${svg[icon]}</span><span class="action-text">${label}</span><span class="arrow">${svg.arrow}</span></a>`}
+function render(card){
+ const name=card.client_name||'Votre entreprise'; const logo=cleanUrl(card.logo_url); const address=card.address||''; const phone=card.phone||''; const website=card.website_url||''; const description=card.description||''; const category=card.category||''; const hours=card.opening_hours||'';
+ document.title=`${name} — Tap’Carte`;
+ let html=`<section class="profile"><div class="logo-wrap">${logo?`<img src="${esc(logo)}" alt="Logo ${esc(name)}" onerror="this.style.display='none';document.getElementById('fallback').style.display='block'">`:''}<div id="fallback" class="logo-fallback" style="display:${logo?'none':'block'}">${esc(name.slice(0,2).toUpperCase())}</div></div><h1 class="name">${esc(name)}</h1>${category?`<div class="category">${esc(category)}</div>`:''}<div class="info">${address?`<a class="info-item" href="${esc(card.google_maps_url||'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(address))}" target="_blank" rel="noopener">${svg.map}<span>${esc(address)}</span></a>`:''}${address&&phone?'<span class="info-dot">•</span>':''}${phone?`<a class="info-item" href="tel:${esc(phone.replace(/[^+\d]/g,''))}">${svg.phone}<span>${esc(phone)}</span></a>`:''}${website?`<a class="info-item" href="${esc(website)}" target="_blank" rel="noopener">${svg.website}<span>Site web</span></a>`:''}</div>${description?`<p class="description">${esc(description)}</p>`:''}${hours?`<div class="hours">${esc(hours)}</div>`:''}</section><section class="actions">`;
+ html+=defs.map(d=>action(...d,card)).join('');
+ html+=`<button class="action save" id="saveButton" type="button"><span class="icon-circle">${svg.star}</span><span class="action-text">Enregistrer cette carte</span><span class="arrow">${svg.arrow}</span></button></section><div class="footer">NFC by Tap’Carte</div>`;
+ document.getElementById('app').innerHTML=html;
+ document.getElementById('saveButton').onclick=()=>{saveModal.classList.add('open');saveModal.setAttribute('aria-hidden','false')};
+}
+async function load(){try{const r=await fetch(`${API_URL}?slug=${encodeURIComponent(slug)}`,{headers:{Accept:'application/json'}});if(!r.ok)throw new Error('API '+r.status);const raw=await r.json();const card=Array.isArray(raw)?raw[0]:raw;if(!card)throw new Error('Carte introuvable');render(card)}catch(e){document.getElementById('app').innerHTML='<div class="error"><strong>Carte introuvable</strong><span>Vérifiez le lien ou le QR code.</span></div>';console.error(e)}}
+const saveModal=document.getElementById('saveModal'); document.getElementById('closeModal').onclick=()=>{saveModal.classList.remove('open');saveModal.setAttribute('aria-hidden','true')}; saveModal.onclick=e=>{if(e.target===saveModal)document.getElementById('closeModal').click()}; document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('closeModal').click()}); load();
+</script>
 </body>
 </html>

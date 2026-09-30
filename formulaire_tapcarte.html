@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tap’Carte — Nouveau client</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f6f5f2;
+    color:#171717;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:32px 18px 60px}
+  .header{margin-bottom:24px}
+  .brand{font-weight:800;font-size:24px;letter-spacing:-.5px}
+  .subtitle{color:#777;margin-top:6px}
+  .card{
+    background:#fff;border:1px solid #e8e6e1;border-radius:18px;
+    padding:24px;margin-bottom:16px;
+  }
+  h2{font-size:17px;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .full{grid-column:1/-1}
+  label{display:block;font-size:13px;font-weight:650;margin-bottom:7px}
+  .required{color:#999;font-weight:500}
+  input,select,textarea{
+    width:100%;border:1px solid #d9d7d1;border-radius:10px;
+    padding:11px 12px;font:inherit;background:#fff;outline:none;
+  }
+  input:focus,select:focus,textarea:focus{border-color:#222}
+  textarea{min-height:100px;resize:vertical}
+  .readonly{background:#f5f4f1;color:#666}
+  .hint{font-size:12px;color:#8a8883;margin-top:6px}
+  .actions{display:flex;align-items:center;gap:12px}
+  button{
+    border:0;border-radius:12px;padding:13px 18px;
+    background:#171717;color:#fff;font-weight:700;font-size:14px;cursor:pointer;
+  }
+  button:disabled{opacity:.55;cursor:not-allowed}
+  .status{font-size:13px}
+  .success{color:#16803c}
+  .error{color:#b42318}
+  .hidden{display:none}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="brand">Tap’Carte</div>
+    <div class="subtitle">Nouveau client</div>
+  </div>
+
+  <form id="clientForm">
+    <section class="card">
+      <h2>Informations client</h2>
+      <div class="grid">
+        <div class="full">
+          <label>Nom du client + nom du business <span class="required">*</span></label>
+          <input name="client_name" required placeholder="Ex. Sarah — Sarah Beauty">
+        </div>
+
+        <div>
+          <label>Plaque <span class="required">*</span></label>
+          <select name="slug" id="slug" required>
+            <option value="">Sélectionner une plaque</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Type de plaque</label>
+          <input id="cardType" class="readonly" readonly placeholder="Automatique">
+        </div>
+
+        <div>
+          <label>Téléphone <span class="required">*</span></label>
+          <input name="phone" type="tel" required placeholder="+216 ...">
+        </div>
+
+        <div>
+          <label>E-mail</label>
+          <input name="email" type="email" placeholder="contact@...">
+        </div>
+
+        <div>
+          <label>Vendeur <span class="required">*</span></label>
+          <input name="seller" required placeholder="Nom du vendeur">
+        </div>
+
+        <div>
+          <label>Catégorie</label>
+          <input name="category" placeholder="Restaurant, coiffeur, hôtel...">
+        </div>
+
+        <div class="full">
+          <label>Adresse</label>
+          <input name="address" placeholder="Adresse du business">
+        </div>
+
+        <div class="full">
+          <label>Logo URL</label>
+          <input name="logo_url" placeholder="https://...">
+          <div class="hint">Pour l'instant, renseigne l'URL du logo hébergé.</div>
+        </div>
+
+        <div class="full">
+          <label>Description</label>
+          <textarea name="description" placeholder="Courte présentation du business"></textarea>
+        </div>
+
+        <div>
+          <label>Date de rencontre</label>
+          <input name="date_meeting" type="date">
+        </div>
+        <div>
+          <label>Date de vente</label>
+          <input name="date_sale" type="date">
+        </div>
+        <div>
+          <label>Date de livraison</label>
+          <input name="date_delivery" type="date">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Réseaux sociaux</h2>
+      <div class="grid">
+        <div><label>Instagram</label><input name="instagram_url" placeholder="https://instagram.com/..."></div>
+        <div><label>Facebook</label><input name="facebook_url" placeholder="https://facebook.com/..."></div>
+        <div><label>TikTok</label><input name="tiktok_url" placeholder="https://tiktok.com/@..."></div>
+        <div><label>WhatsApp</label><input name="whatsapp_url" placeholder="https://wa.me/..."></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Plateformes</h2>
+      <div class="grid">
+        <div><label>Google</label><input name="google_url" placeholder="Lien Google"></div>
+        <div><label>TripAdvisor</label><input name="tripadvisor_url" placeholder="Lien TripAdvisor"></div>
+        <div><label>Booking</label><input name="booking_url" placeholder="Lien Booking"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Site & services</h2>
+      <div class="grid">
+        <div><label>Site Web</label><input name="website_url" placeholder="https://..."></div>
+        <div><label>Menu</label><input name="menu_url" placeholder="https://..."></div>
+        <div><label>Rendez-vous</label><input name="appointment_url" placeholder="https://..."></div>
+        <div><label>Services</label><input name="services_url" placeholder="https://..."></div>
+        <div><label>Tarifs</label><input name="price_list_url" placeholder="https://..."></div>
+        <div><label>Devis</label><input name="quote_url" placeholder="https://..."></div>
+        <div><label>Galerie</label><input name="gallery_url" placeholder="https://..."></div>
+        <div><label>Google Maps</label><input name="google_maps_url" placeholder="https://maps.google.com/..."></div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="submitBtn" type="submit">Enregistrer le client</button>
+      <span id="status" class="status"></span>
+    </div>
+  </form>
+</div>
+
+<script>
+const API_URL = "https://x8ki-letl-twmt.n7.xano.io/api:card/configure_card";
+
+const slugSelect = document.getElementById("slug");
+const cardType = document.getElementById("cardType");
+const form = document.getElementById("clientForm");
+const submitBtn = document.getElementById("submitBtn");
+const statusEl = document.getElementById("status");
+
+// 200 plaques : TC0001-TC0100 = Google, TC0101-TC0200 = Multi-liens.
+for(let i=1;i<=200;i++){
+  const slug = `TC${String(i).padStart(4,"0")}`;
+  const option = document.createElement("option");
+  option.value = slug;
+  option.textContent = slug;
+  option.dataset.type = i <= 100 ? "Google" : "Multi-liens";
+  slugSelect.appendChild(option);
+}
+
+slugSelect.addEventListener("change", () => {
+  const selected = slugSelect.options[slugSelect.selectedIndex];
+  cardType.value = selected?.dataset?.type || "";
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusEl.textContent = "";
+  statusEl.className = "status";
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Enregistrement...";
+
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  // Empty optional fields are sent as empty strings.
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(data)
+    });
+
+    const text = await response.text();
+    let result = null;
+    try { result = text ? JSON.parse(text) : null; } catch {}
+
+    if(!response.ok){
+      throw new Error(result?.message || result?.error || text || `Erreur ${response.status}`);
+    }
+
+    statusEl.textContent = "Client enregistré avec succès.";
+    statusEl.className = "status success";
+    form.reset();
+    cardType.value = "";
+  } catch (error) {
+    statusEl.textContent = "Erreur : " + error.message;
+    statusEl.className = "status error";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Enregistrer le client";
+  }
+});
+</script>
+</body>
+</html>
